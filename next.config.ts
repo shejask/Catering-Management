@@ -13,9 +13,6 @@ const baseConfig: NextConfig = {
     ]
   },
   transpilePackages: ['geist'],
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   typescript: {
     ignoreBuildErrors: true
   }
