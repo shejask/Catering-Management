@@ -1,0 +1,181 @@
+/* Arabic RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .space-x-2 > * + * {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .space-x-3 > * + * {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+
+[dir="rtl"] .space-x-4 > * + * {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .space-x-8 > * + * {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+[dir="rtl"] .justify-start {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .justify-end {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .items-start {
+  align-items: flex-end;
+}
+
+[dir="rtl"] .items-end {
+  align-items: flex-start;
+}
+
+/* Form specific RTL styles */
+[dir="rtl"] .grid {
+  direction: rtl;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+}
+
+[dir="rtl"] .border-l {
+  border-left: none;
+  border-right: 1px solid;
+}
+
+[dir="rtl"] .border-r {
+  border-right: none;
+  border-left: 1px solid;
+}
+
+/* Table RTL styles */
+[dir="rtl"] table {
+  direction: rtl;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: right;
+}
+
+/* Card RTL styles */
+[dir="rtl"] .card {
+  direction: rtl;
+}
+
+/* Button RTL styles */
+[dir="rtl"] .flex-row-reverse {
+  flex-direction: row;
+}
+
+/* Dropdown RTL styles */
+[dir="rtl"] .dropdown-content {
+  right: auto;
+  left: 0;
+}
+
+/* Arabic font support */
+[dir="rtl"] {
+  font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+}
+
+/* Fix for icons in RTL */
+[dir="rtl"] .icon-left {
+  order: 2;
+}
+
+[dir="rtl"] .icon-right {
+  order: 1;
+}
+
+/* Sidebar RTL adjustments */
+[dir="rtl"] .sidebar {
+  right: 0;
+  left: auto;
+}
+
+/* Navigation RTL adjustments */
+[dir="rtl"] .nav-item {
+  text-align: right;
+}
+
+/* Form field RTL adjustments */
+[dir="rtl"] .form-field {
+  text-align: right;
+}
+
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+/* Badge RTL adjustments */
+[dir="rtl"] .badge {
+  direction: rtl;
+}
+
+/* Dialog RTL adjustments */
+[dir="rtl"] .dialog-content {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Toast RTL adjustments */
+[dir="rtl"] .toast {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Currency RTL adjustments */
+[dir="rtl"] .currency {
+  direction: ltr;
+  text-align: left;
+  display: inline-block;
+}
+
+/* Number inputs RTL adjustments */
+[dir="rtl"] input[type="number"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Date and time inputs RTL adjustments */
+[dir="rtl"] input[type="date"],
+[dir="rtl"] input[type="time"] {
+  direction: ltr;
+  text-align: left;
+}
