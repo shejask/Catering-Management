@@ -13,43 +13,27 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 import { useInventoryCustomersStore } from '@/stores/inventory-customers-store';
 import { downloadBarcodePDF } from '../lib/barcode-pdf';
 import { IconPlus } from '@tabler/icons-react';
 
-const DEFAULT_CATEGORIES = ['Equipment', 'Tableware', 'Linens', 'Decoration', 'Other'];
-
 export function AddProductDialog() {
   const addProduct = useInventoryCustomersStore((s) => s.addProduct);
-  const products = useInventoryCustomersStore((s) => s.products);
   const [open, setOpen] = useState(false);
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
-  const [categoryCustom, setCategoryCustom] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [printAfterSave, setPrintAfterSave] = useState(false);
-
-  const categories = [...DEFAULT_CATEGORIES, ...products.map((p) => p.category).filter(Boolean)];
-  const uniqueCategories = Array.from(new Set(categories));
-  const finalCategory = category === 'Other' || !category ? categoryCustom || 'Uncategorized' : category;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!productName.trim()) return;
-    const product = addProduct(productName.trim(), finalCategory, Math.max(0, quantity));
+    const product = addProduct(productName.trim(), category.trim() || 'Uncategorized', Math.max(0, quantity));
     if (printAfterSave) {
       downloadBarcodePDF([product]);
     }
     setProductName('');
     setCategory('');
-    setCategoryCustom('');
     setQuantity(1);
     setPrintAfterSave(false);
     setOpen(false);
@@ -79,27 +63,13 @@ export function AddProductDialog() {
             />
           </div>
           <div className="space-y-2">
-            <Label>Category</Label>
-            <Select value={category || undefined} onValueChange={setCategory}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select or type below" />
-              </SelectTrigger>
-              <SelectContent>
-                {uniqueCategories.map((c) => (
-                  <SelectItem key={c} value={c}>
-                    {c}
-                  </SelectItem>
-                ))}
-                <SelectItem value="Other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-            {(category === 'Other' || !category) && (
-              <Input
-                placeholder="Category name"
-                value={categoryCustom}
-                onChange={(e) => setCategoryCustom(e.target.value)}
-              />
-            )}
+            <Label htmlFor="category">Category</Label>
+            <Input
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="e.g. Equipment, Tableware, Linens"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="quantity">Quantity</Label>

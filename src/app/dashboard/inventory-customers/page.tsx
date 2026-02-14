@@ -16,15 +16,15 @@ import { useCallback, useEffect, useState } from 'react';
 export default function InventoryCustomersPage() {
   const searchParams = useSearchParams();
   const section = searchParams.get('section');
-  const [accordionValue, setAccordionValue] = useState<string>('inventory');
+  const [activeSection, setActiveSection] = useState<string>('inventory');
 
   useEffect(() => {
-    if (section === 'customers') setAccordionValue('customers');
-    else if (section === 'inventory') setAccordionValue('inventory');
+    if (section === 'customers') setActiveSection('customers');
+    else if (section === 'inventory') setActiveSection('inventory');
   }, [section]);
 
-  const handleAccordionChange = useCallback((value: string) => {
-    setAccordionValue(value);
+  const handleSectionChange = useCallback((value: string) => {
+    setActiveSection(value);
   }, []);
 
   return (
@@ -37,8 +37,8 @@ export default function InventoryCustomersPage() {
         <Accordion
           type="single"
           collapsible
-          value={accordionValue}
-          onValueChange={handleAccordionChange}
+          value={activeSection}
+          onValueChange={handleSectionChange}
           className="w-full"
         >
           <AccordionItem value="inventory">

@@ -11,18 +11,10 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 import { useInventoryCustomersStore, type InventoryProduct } from '@/stores/inventory-customers-store';
 
 export function EditProductDialog({ product, onClose }: { product: InventoryProduct; onClose: () => void }) {
   const updateProduct = useInventoryCustomersStore((s) => s.updateProduct);
-  const products = useInventoryCustomersStore((s) => s.products);
   const [productName, setProductName] = useState(product.productName);
   const [category, setCategory] = useState(product.category);
   const [quantity, setQuantity] = useState(product.quantity);
@@ -32,8 +24,6 @@ export function EditProductDialog({ product, onClose }: { product: InventoryProd
     setCategory(product.category);
     setQuantity(product.quantity);
   }, [product]);
-
-  const categories = Array.from(new Set(products.map((p) => p.category).filter(Boolean)));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,19 +49,13 @@ export function EditProductDialog({ product, onClose }: { product: InventoryProd
             />
           </div>
           <div className="space-y-2">
-            <Label>Category</Label>
-            <Select value={category || undefined} onValueChange={setCategory}>
-              <SelectTrigger className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {categories.map((c) => (
-                  <SelectItem key={c} value={c}>
-                    {c}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Label htmlFor="edit-category">Category</Label>
+            <Input
+              id="edit-category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="e.g. Equipment, Tableware, Linens"
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="edit-quantity">Quantity</Label>
