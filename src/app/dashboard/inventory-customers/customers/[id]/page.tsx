@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import PageContainer from '@/components/layout/page-container';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,7 +20,6 @@ import { ScanReturnSheet } from '@/features/inventory-customers/components/scan-
 
 export default function CustomerDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const id = params.id as string;
   const getCustomerById = useInventoryCustomersStore((s) => s.getCustomerById);
   const getAssignmentsByCustomer = useInventoryCustomersStore((s) => s.getAssignmentsByCustomer);

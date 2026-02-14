@@ -51,7 +51,10 @@ export function BarcodeScanner({ onScan, onError, className }: BarcodeScannerPro
 
   useEffect(() => {
     return () => {
-      stop();
+      if (scannerRef.current) {
+        scannerRef.current.stop().catch(() => {});
+        scannerRef.current = null;
+      }
     };
   }, []);
 

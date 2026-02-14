@@ -8,7 +8,7 @@ const LABEL_WIDTH = 60;
 const LABEL_HEIGHT = 40;
 const PADDING = 8;
 
-function drawBarcodeToCanvas(value: string, productName: string): HTMLCanvasElement {
+function drawBarcodeToCanvas(value: string): HTMLCanvasElement {
   const canvas = document.createElement('canvas');
   JsBarcode(canvas, value, {
     format: 'CODE128',
@@ -24,13 +24,12 @@ function drawBarcodeToCanvas(value: string, productName: string): HTMLCanvasElem
 export function downloadBarcodePDF(products: InventoryProduct[]) {
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
   const pageWidth = doc.internal.pageSize.getWidth();
-  const cols = Math.floor(pageWidth / (LABEL_WIDTH + PADDING));
   let x = PADDING;
   let y = PADDING;
   const rowHeight = LABEL_HEIGHT + PADDING;
 
   products.forEach((p) => {
-    const canvas = drawBarcodeToCanvas(p.barcodeId, p.productName);
+    const canvas = drawBarcodeToCanvas(p.barcodeId);
     const imgData = canvas.toDataURL('image/png');
     const imgW = 50;
     const imgH = 18;

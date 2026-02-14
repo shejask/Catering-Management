@@ -30,7 +30,6 @@ export function ScanOutSheet() {
   const [success, setSuccess] = useState(false);
 
   const getProductByBarcode = useInventoryCustomersStore((s) => s.getProductByBarcode);
-  const getCustomerById = useInventoryCustomersStore((s) => s.getCustomerById);
   const assignProductToCustomer = useInventoryCustomersStore((s) => s.assignProductToCustomer);
   const customers = useInventoryCustomersStore((s) => s.customers);
 

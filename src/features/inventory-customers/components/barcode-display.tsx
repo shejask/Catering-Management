@@ -27,8 +27,8 @@ export function BarcodeDisplay({ value, productName, className, width = 2, heigh
         fontOptions: '',
         font: 'monospace'
       });
-    } catch (e) {
-      console.warn('Barcode render error', e);
+    } catch {
+      // Barcode render failed, ignore
     }
   }, [value, width, height]);
 

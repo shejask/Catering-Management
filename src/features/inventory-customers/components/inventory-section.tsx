@@ -30,7 +30,7 @@ import { AddProductDialog } from './add-product-dialog';
 import { downloadBarcodePDF } from '../lib/barcode-pdf';
 import { ScanOutSheet } from './scan-out-sheet';
 import { ScanInSheet } from './scan-in-sheet';
-import { IconDotsVertical, IconPrinter, IconScan, IconEdit, IconTrash } from '@tabler/icons-react';
+import { IconDotsVertical, IconPrinter, IconEdit, IconTrash } from '@tabler/icons-react';
 import {
   AlertDialog,
   AlertDialogAction,

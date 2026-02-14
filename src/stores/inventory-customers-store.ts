@@ -164,7 +164,7 @@ export const useInventoryCustomersStore = create<InventoryCustomersState>()(
         return true;
       },
 
-      returnProductToInventory: (barcodeId, _customerId) => {
+      returnProductToInventory: (barcodeId) => {
         const assignment = get().assignments.find(
           (a) => a.barcodeId === barcodeId && a.status === 'with_customer'
         );
